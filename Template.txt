@@ -1,0 +1,48 @@
+CREATE TABLE plants_data(plant_name varchar(25), plant_type varchar(7), quantity int(2), price int(2));
+
+INSERT INTO plants_data (plant_name, plant_type, quantity, price) VALUES ("Bonsai", "Indoor", 5, 20);
+INSERT INTO plants_data (plant_name, plant_type, quantity, price) VALUES ("Peace Lily", "Indoor", 7, 20);
+INSERT INTO plants_data (plant_name, plant_type, quantity, price) VALUES ("Aloe Vera", "Indoor", 5, 10);
+INSERT INTO plants_data (plant_name, plant_type, quantity, price) VALUES ("Monstera Deliciosa", "Indoor", 7, 15);
+INSERT INTO plants_data (plant_name, plant_type, quantity, price) VALUES ("Cactus", "Indoor", 8, 8);
+INSERT INTO plants_data (plant_name, plant_type, quantity, price) VALUES ("Spider Plant", "Indoor", 5, 8);
+INSERT INTO plants_data (plant_name, plant_type, quantity, price) VALUES ("Snake Plant", "Indoor", 5, 20);
+INSERT INTO plants_data (plant_name, plant_type, quantity, price) VALUES ("Devil's Ivy", "Indoor", 5, 15);
+INSERT INTO plants_data (plant_name, plant_type, quantity, price) VALUES ("Maidenhair Fern", "Indoor", 5, 10);
+INSERT INTO plants_data (plant_name, plant_type, quantity, price) VALUES ("Olive Tree", "Outdoor", 5, 50);
+INSERT INTO plants_data (plant_name, plant_type, quantity, price) VALUES ("Lemon Tree", "Outdoor", 5, 60);
+INSERT INTO plants_data (plant_name, plant_type, quantity, price) VALUES ("Bay Tree", "Outdoor", 5, 35);
+INSERT INTO plants_data (plant_name, plant_type, quantity, price) VALUES ("Palm Tree", "Outdoor", 5, 65);
+
+
+UPDATE table_name
+SET column1 = value1,
+    column2 = value2,
+WHERE conditions;
+(if you do not apply a WHERE clause, the change will apply to every row in the table)
+
+UPDATE plants_data
+SET price = 25
+WHERE plant_name = "Bonsai";
+
+UPDATE plants_data
+SET price = 60, quantity = 10
+WHERE plant_name = "Lemon Tree";
+
+SELECT plant_name from plants_data;
+
+UPDATE plants_data
+SET plant_name = "bay_tree"
+WHERE plant_name = "Bay Tree";
+
+Bonsai|Indoor|5|25
+Peace Lily|Indoor|7|20        
+Aloe Vera|Indoor|5|10
+Monstera Deliciosa|Indoor|7|15
+Cactus|Indoor|8|8
+Spider Plant|Indoor|5|8       
+Snake Plant|Outdoor|5|50       
+Lemon Tree|Outdoor|10|60
+Bay Tree|Outdoor|5|35
+Palm Tree|Outdoor|5|65
+Spider Plant|Indoor|5|
