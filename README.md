@@ -19,7 +19,7 @@ Use cd and navigate to the folder if not.
  
 Type the following commands into the command line:
  
-`export FLASK_APP=restapi.py`
+`export FLASK_APP=rest_api.py`
 `export FLASK_ENV=development`
 `flask run`
  
