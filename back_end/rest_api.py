@@ -25,11 +25,24 @@ class Display_Quantity(Resource):
     def get(self, plant_name):
         conn = db_connect.connect()
         query = conn.execute(f"select quantity from plants_data where plant_name='{plant_name}'")
-        return [i for i in query.cursor][0][0]
+        quantity = [i for i in query.cursor][0][0]
+        return quantity
+
+class Bought_Item(Resource):
+    def get(self, plant_name):
+        conn = db_connect.connect()
+        query = conn.execute(f"select quantity from plants_data where plant_name='{plant_name}'")
+        stock_quantity = [i for i in query.cursor][0][0]
+        quantity_minus_one = stock_quantity - 1
+        query = conn.execute(f"update plants_data set quantity='{quantity_minus_one}' where plant_name='{plant_name}'")
+
+
 
 api.add_resource(Plants, '/plants_data') # Route_1
-api.add_resource(Plants_Name, '/plants_data/<plant_name>') # Route_3
+api.add_resource(Plants_Name, '/plants_data/<plant_name>') 
 api.add_resource(Display_Quantity, '/plants_data/<plant_name>/quantity')
+# bought item resource? copied from above but unsure if it changes?
+api.add_resource(Bought_Item, '/plants_data/<plant_name>/purchase')
 
 
 if __name__ == '__main__':

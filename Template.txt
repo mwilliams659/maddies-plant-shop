@@ -42,3 +42,6 @@ olive_tree|Outdoor|5|25
 lemon_tree|Outdoor|10|25
 palm_tree|Outdoor|5|25
 
+
+sqlite3 plants_database.db
+

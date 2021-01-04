@@ -23,3 +23,9 @@ function displayStock() {
 }
 
 displayStock();
+
+
+// Buy button - when clicked it will reduce the chosen stock quantity by 1
+function buyButton() {
+  
+}
