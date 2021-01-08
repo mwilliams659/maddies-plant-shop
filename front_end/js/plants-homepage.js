@@ -18,6 +18,7 @@ for(i = 0; i < (plantsList).length; i++  ){
 
 function displayStock() {
   for(i = 0; i < (plantsList).length; i++ ) {
+    console.log(plantsList[i]);
     document.getElementById(`${plantsList[i]}-stock`).innerHTML = plantsQuantities[i] + " available";
   }
 }
@@ -26,6 +27,8 @@ displayStock();
 
 
 // Buy button - when clicked it will reduce the chosen stock quantity by 1
-function buyButton() {
-  
+function buyStockButton(plantName) {
+  quantity = httpGet(`http://127.0.0.1:5000/plants_data/${plantName}/purchase`);
+  location.reload();
 }
+
