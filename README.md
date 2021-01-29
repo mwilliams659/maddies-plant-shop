@@ -23,8 +23,11 @@ Type the following commands into the command line:
 `export FLASK_ENV=development`
 `flask run`
  
-Open the HTML file in your browser by entering the path to the HTML file into the URL. 
- 
+Click the `Go Live` button on the bottom right of your VS Code to start your front end server.
+
+Navigate to `http://localhost:5500/front_end/html/plants-homepage.html` in chrome browser
+
+
 This will open the front-end UI.
  
 # Dependencies
