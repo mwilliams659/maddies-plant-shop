@@ -1,6 +1,7 @@
 function httpGet(theUrl) {
   let xmlHttpReq = new XMLHttpRequest();
-  xmlHttpReq.open("GET", theUrl, false); 
+  xmlHttpReq.open("GET", theUrl, false);
+  xmlHttpReq.setRequestHeader('Content-type', 'application/json') 
   xmlHttpReq.send(null);
   return xmlHttpReq.responseText;
 }
