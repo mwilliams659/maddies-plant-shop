@@ -6,8 +6,10 @@ from rest_api import get_single_plant_data
 from rest_api import get_plant_quantity
 from rest_api import single_plant_bought
 from rest_api import update_quantity
+from rest_api import db_connect
 
 db_connect = create_engine('sqlite:///tests/database/test_plants_database.db')
+
 
 @mock.patch("rest_api.db_connect")
 def test_get_all_plants_data(mock_db_connect):

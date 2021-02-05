@@ -29,6 +29,10 @@ Navigate to `http://localhost:5500/front_end/html/plants-homepage.html` in chrom
 
 
 This will open the front-end UI.
+
+# Tests
+To test the Python REST API, navigate to `/back_end/python` and enter the command:
+`python -m pytest -v`
  
 # Dependencies
 aniso8601==8.1.0
