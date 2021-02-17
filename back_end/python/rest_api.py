@@ -4,6 +4,7 @@ from sqlalchemy import create_engine
 from json import dumps
 from flask_jsonpify import jsonify
 from flask_cors import CORS
+import datetime
 
 def db_connect():
     return create_engine('sqlite:///../database/plants_database.db')
@@ -51,6 +52,24 @@ def update_quantity(plant_name, quantity):
     # executes the SQL statement which will update the plants_data table, sets the quantity of the stock to the new quantity.
     query = conn.execute(f"update plants_data set quantity='{quantity}' where plant_name='{plant_name}'")
     return f"{plant_name} quantity updated to {quantity}"
+
+def add_to_basket(cart_id, plant_name, quantity, price):
+    conn = db_connect().connect()
+    time_stamp = datetime.datetime.now()
+    query = conn.execute(f"INSERT INTO basket_table (id, plant_name, cart_id, price, quantity, created_at, updated_at) VALUES (1, '{plant_name}', '{cart_id}', '{price}', '{quantity}', '{time_stamp}', 'time');")
+    return f"{plant_name} added to basket"
+
+#function which will get one record from the basket_table table
+def get_record_from_basket_table(cart_id):
+    conn = db_connect().connect() # connect to database
+    query = conn.execute(f"select * from basket_table where cart_id='{cart_id}'")
+    return {'record': [i for i in query.cursor]} # Fetches the data
+
+#function which will remove one record from the plants_data table
+def remove_record_from_plants_data(plant_name):
+    conn = db_connect().connect()
+    query = conn.execute(f"delete from plants_data where plant_name='{plant_name}'")
+    
 
 if __name__ == '__main__':
      app.run(port='5002')
