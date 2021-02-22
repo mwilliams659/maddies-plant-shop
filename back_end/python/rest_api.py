@@ -66,9 +66,9 @@ def get_record_from_basket_table(cart_id):
     return {'record': [i for i in query.cursor]} # Fetches the data
 
 #function which will remove one record from the plants_data table
-def remove_record_from_plants_data(plant_name):
+def remove_record_from_basket_table(cart_id):
     conn = db_connect().connect()
-    query = conn.execute(f"delete from plants_data where plant_name='{plant_name}'")
+    query = conn.execute(f"delete from basket_table where cart_id='{cart_id}'")
     
 
 if __name__ == '__main__':
