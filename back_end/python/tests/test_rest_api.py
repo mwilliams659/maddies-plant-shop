@@ -10,6 +10,7 @@ from rest_api import single_plant_bought
 from rest_api import update_quantity
 from rest_api import db_connect
 from rest_api import add_to_basket
+from rest_api import add_to_basket1
 from rest_api import get_record_from_basket_table
 from rest_api import remove_record_from_basket_table
 
@@ -60,16 +61,31 @@ def test_update_quantity(mock_db_connect):
     assert int(new_quantity) == 50
     update_quantity('Bonsai', old_quantity)
 
+# @freeze_time("2020-04-11")
+# @mock.patch("rest_api.db_connect")
+# def test_add_to_basket(mock_db_connect):
+#     mock_db_connect.return_value = db_connect
+#     add_to_basket('test_cart_id', 'Bonsai', 1)
+#     response = get_record_from_basket_table('test_cart_id')
+#     assert response == {'record': [('1', 'Bonsai', 'test_cart_id', 20, 1, '2020-04-11 00:00:00', 'time')]}
+#     remove_record_from_basket_table('test_cart_id')
+
 @freeze_time("2020-04-11")
 @mock.patch("rest_api.db_connect")
-def test_add_to_basket(mock_db_connect):
+def test_add_to_basket1(mock_db_connect):
     mock_db_connect.return_value = db_connect
-    add_to_basket('test_cart_id', 'Bonsai', 1)
+    #stock
+    oldstockquantity = int(get_plant_quantity('Bonsai'))
+    #call the add to basket function
+    add_to_basket1('test_cart_id', 'Bonsai', 1)
+    newstockquantity = int(get_plant_quantity('Bonsai'))
+    assert oldstockquantity - newstockquantity == 1
+    #basket
     response = get_record_from_basket_table('test_cart_id')
     assert response == {'record': [('1', 'Bonsai', 'test_cart_id', 20, 1, '2020-04-11 00:00:00', 'time')]}
     remove_record_from_basket_table('test_cart_id')
-    # response = add_to_basket(cart_id, plant_name, quantity, price)
-    # assert response == 'abc'
+    update_quantity('Bonsai', oldstockquantity)
+
 
 @mock.patch("rest_api.db_connect")
 def test_get_record_from_basket_table(mock_db_connect):

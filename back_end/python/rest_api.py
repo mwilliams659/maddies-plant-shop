@@ -60,9 +60,24 @@ def update_quantity(plant_name, quantity):
     query = conn.execute(f"update plants_data set quantity='{quantity}' where plant_name='{plant_name}'")
     return f"{plant_name} quantity updated to {quantity}"
 
+# @app.route('/plants_data/<plant_name>/<quantity>/<cart_id>')
+# def add_to_basket(cart_id, plant_name, quantity):
+#     conn = db_connect().connect()
+#     price = get_plant_price(plant_name)
+#     time_stamp = datetime.datetime.now()
+#     query = conn.execute(f"INSERT INTO basket_table (id, plant_name, cart_id, price, quantity, created_at, updated_at) VALUES (1, '{plant_name}', '{cart_id}', '{price}', '{quantity}', '{time_stamp}', 'time');")
+#     return f"{plant_name} added to basket"
+
+# copy of function above!
 @app.route('/plants_data/<plant_name>/<quantity>/<cart_id>')
-def add_to_basket(cart_id, plant_name, quantity):
+def add_to_basket1(cart_id, plant_name, quantity):
     conn = db_connect().connect()
+    #checks the quantity and minuses it off. Changing the quantity in the plants_data table.
+   #stock
+    oldquantity = int(get_plant_quantity(plant_name))
+    new_quantity = oldquantity - quantity
+    update_quantity(plant_name, new_quantity)
+    #basket
     price = get_plant_price(plant_name)
     time_stamp = datetime.datetime.now()
     query = conn.execute(f"INSERT INTO basket_table (id, plant_name, cart_id, price, quantity, created_at, updated_at) VALUES (1, '{plant_name}', '{cart_id}', '{price}', '{quantity}', '{time_stamp}', 'time');")
