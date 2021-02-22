@@ -29,14 +29,21 @@ def get_single_plant_data(plant_name):
     query = conn.execute(f"select * from plants_data where plant_name='{plant_name}'")
     return {'record': [i for i in query.cursor]} # Fetches the data
 
+@app.route("/plants_data/<plant_name>/price")
+def get_plant_price(plant_name):
+    # When a plant's name is entered into the plant_name input, this function returns the price of that plant from the plants_data table in the database.
+    conn = db_connect().connect() # connect to database
+    query = conn.execute(f"select price from plants_data where plant_name='{plant_name}'")
+    price = [i for i in query.cursor][0][0]
+    return str(price)
 
 @app.route("/plants_data/<plant_name>/quantity")
 def get_plant_quantity(plant_name):
     # When a plant's name is entered into the plant_name input, this function returns the quantity of that plant from the plants_data table in the database.
     conn = db_connect().connect() # connect to database
     query = conn.execute(f"select quantity from plants_data where plant_name='{plant_name}'")
-    quantity = str([i for i in query.cursor][0][0])
-    return quantity
+    quantity = ([i for i in query.cursor][0][0])
+    return str(quantity)
 
 @app.route('/plants_data/<plant_name>/purchase')
 def single_plant_bought(plant_name):
@@ -53,8 +60,10 @@ def update_quantity(plant_name, quantity):
     query = conn.execute(f"update plants_data set quantity='{quantity}' where plant_name='{plant_name}'")
     return f"{plant_name} quantity updated to {quantity}"
 
-def add_to_basket(cart_id, plant_name, quantity, price):
+@app.route('/plants_data/<plant_name>/<quantity>/<cart_id>')
+def add_to_basket(cart_id, plant_name, quantity):
     conn = db_connect().connect()
+    price = get_plant_price(plant_name)
     time_stamp = datetime.datetime.now()
     query = conn.execute(f"INSERT INTO basket_table (id, plant_name, cart_id, price, quantity, created_at, updated_at) VALUES (1, '{plant_name}', '{cart_id}', '{price}', '{quantity}', '{time_stamp}', 'time');")
     return f"{plant_name} added to basket"
