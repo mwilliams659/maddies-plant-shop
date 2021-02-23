@@ -1,3 +1,18 @@
+// Page Animations
+window.addEventListener("beforeunload", function () {
+  document.body.classList.add("animate-out");
+});
+
+function responsiveNavbar() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+
+
 function httpGet(theUrl) {
   let xmlHttpReq = new XMLHttpRequest();
   xmlHttpReq.open("GET", theUrl, false);
