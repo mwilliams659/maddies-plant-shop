@@ -9,24 +9,27 @@ from rest_api import get_plant_quantity
 from rest_api import single_plant_bought
 from rest_api import update_quantity
 from rest_api import db_connect
-from rest_api import add_to_basket
+# from rest_api import add_to_basket
 from rest_api import add_to_basket1
 from rest_api import get_record_from_basket_table
 from rest_api import remove_record_from_basket_table
+from rest_api import get_all_basket_table_data
 
 db_connect = create_engine('sqlite:///tests/database/test_plants_database.db')
+
+# plants_data tests
 
 @mock.patch("rest_api.db_connect")
 def test_get_all_plants_data(mock_db_connect):
     mock_db_connect.return_value = db_connect
     response = get_all_plants_data()
-    assert response == {'plants_data': [('Bonsai', 'Indoor', 3, 20), ('Peace Lily', 'Indoor', 7, 20)]}
+    assert response == {'plants_data': [('Bonsai', 'Indoor', 500, 20), ('Peace Lily', 'Indoor', 500, 20)]}
 
 @mock.patch("rest_api.db_connect")
 def test_get_single_plant_data(mock_db_connect):
     mock_db_connect.return_value = db_connect
     response = get_single_plant_data('Bonsai')
-    assert response == {'record': [('Bonsai', 'Indoor', 3, 20)]}
+    assert response == {'record': [('Bonsai', 'Indoor', 500, 20)]}
 
 @mock.patch("rest_api.db_connect")
 def test_get_plant_price(mock_db_connect):
@@ -38,7 +41,7 @@ def test_get_plant_price(mock_db_connect):
 def test_get_plant_quantity(mock_db_connect):
     mock_db_connect.return_value = db_connect
     response = get_plant_quantity('Bonsai')
-    assert response == '3'
+    assert response == '500'
 
 @mock.patch("rest_api.db_connect")
 def test_single_plant_bought(mock_db_connect):
@@ -70,6 +73,8 @@ def test_update_quantity(mock_db_connect):
 #     assert response == {'record': [('1', 'Bonsai', 'test_cart_id', 20, 1, '2020-04-11 00:00:00', 'time')]}
 #     remove_record_from_basket_table('test_cart_id')
 
+#basket_table tests:
+
 @freeze_time("2020-04-11")
 @mock.patch("rest_api.db_connect")
 def test_add_to_basket1(mock_db_connect):
@@ -96,10 +101,18 @@ def test_get_record_from_basket_table(mock_db_connect):
 @mock.patch("rest_api.db_connect")
 def test_remove_record_from_basket_table(mock_db_connect):
     mock_db_connect.return_value = db_connect
+    add_to_basket1('test_cart_id', 'Peace Lily', 1)
     
-    add_to_basket('test_cart_id', 'Peace Lily', 1)
+    old_stock_quantity = get_plant_quantity('Peace Lily')
     
     remove_record_from_basket_table('test_cart_id')
-    
+    new_stock_quantity = get_plant_quantity('Peace Lily')
+   
     assert get_record_from_basket_table('test_cart_id') == {'record': []}
+    assert int(new_stock_quantity) == int(old_stock_quantity) + 1
 
+@mock.patch("rest_api.db_connect")
+def test_get_all_basket_table_data(mock_db_connect):
+    mock_db_connect.return_value = db_connect
+    response = get_all_basket_table_data()
+    assert response ==  {'basket_table': [('1', 'Bonsai', 'abc', 20, 1, '2021-02-17 16:17:15.871149', 'time')]}

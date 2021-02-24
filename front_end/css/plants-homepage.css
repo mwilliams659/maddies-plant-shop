@@ -20,6 +20,14 @@
     to { opacity: 1; }
 }
 
+.stock-name {
+    transition: background-position 275ms ease;
+}
+
+.stock-name:hover {
+    background-position: 0 100%;
+  }
+
 .grow {
     transition: all .2s ease-in-out;
 }

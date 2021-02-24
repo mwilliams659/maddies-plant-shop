@@ -14,6 +14,12 @@ api = Api(app)
 CORS(app, resources={r"/api/*": {"origins": "http://localhost:5500"}})
 
 
+
+
+
+
+# plants_data table functions:
+
 @app.route("/plants_data")
 def get_all_plants_data():
     # This function is returning all of the plants stock data from the plants_data table in the database.
@@ -24,7 +30,7 @@ def get_all_plants_data():
     
 @app.route("/plants_data/<plant_name>")
 def get_single_plant_data(plant_name):
-    # When a plant's name is entered into the plant_name input, this function returns all of that plant's data from the plants_data table in the database.
+    # When a plant's name is entered into the plant_name input, this function returns all of that plant's data from the plants_data table in the plants_data database.
     conn = db_connect().connect() # connect to database
     query = conn.execute(f"select * from plants_data where plant_name='{plant_name}'")
     return {'record': [i for i in query.cursor]} # Fetches the data
@@ -60,6 +66,8 @@ def update_quantity(plant_name, quantity):
     query = conn.execute(f"update plants_data set quantity='{quantity}' where plant_name='{plant_name}'")
     return f"{plant_name} quantity updated to {quantity}"
 
+
+#This function is the add_to_basket1 function before it got finalised. Keeping (uncommented)for now
 # @app.route('/plants_data/<plant_name>/<quantity>/<cart_id>')
 # def add_to_basket(cart_id, plant_name, quantity):
 #     conn = db_connect().connect()
@@ -68,32 +76,59 @@ def update_quantity(plant_name, quantity):
 #     query = conn.execute(f"INSERT INTO basket_table (id, plant_name, cart_id, price, quantity, created_at, updated_at) VALUES (1, '{plant_name}', '{cart_id}', '{price}', '{quantity}', '{time_stamp}', 'time');")
 #     return f"{plant_name} added to basket"
 
-# copy of function above!
-@app.route('/plants_data/<plant_name>/<quantity>/<cart_id>')
+
+
+
+
+# basket_table functions:
+
+@app.route('/basket/<plant_name>/<quantity>/<cart_id>')
 def add_to_basket1(cart_id, plant_name, quantity):
     conn = db_connect().connect()
     #checks the quantity and minuses it off. Changing the quantity in the plants_data table.
-   #stock
+    #stock/plants_data table
     oldquantity = int(get_plant_quantity(plant_name))
-    new_quantity = oldquantity - quantity
+    new_quantity = oldquantity - int(quantity)
     update_quantity(plant_name, new_quantity)
-    #basket
+    #basket_table data
     price = get_plant_price(plant_name)
     time_stamp = datetime.datetime.now()
     query = conn.execute(f"INSERT INTO basket_table (id, plant_name, cart_id, price, quantity, created_at, updated_at) VALUES (1, '{plant_name}', '{cart_id}', '{price}', '{quantity}', '{time_stamp}', 'time');")
     return f"{plant_name} added to basket"
 
 #function which will get one record from the basket_table table
+@app.route('/basket/<cart_id>')
 def get_record_from_basket_table(cart_id):
     conn = db_connect().connect() # connect to database
     query = conn.execute(f"select * from basket_table where cart_id='{cart_id}'")
     return {'record': [i for i in query.cursor]} # Fetches the data
 
-#function which will remove one record from the plants_data table
+#function which will remove one record from the basket_table table
 def remove_record_from_basket_table(cart_id):
     conn = db_connect().connect()
+    basket_record = get_record_from_basket_table(cart_id)['record']
+    # import pytest
+    # pytest.set_trace()
+    # print(basket_record)
+    for plant in basket_record:
+        basket_quantity = plant[4]
+        plant_name = plant[1]
+        # old quantity of the stock from the plants_data table to know what to change it back to
+        oldquantity = int(get_plant_quantity(plant_name))
+        update_quantity(plant_name, oldquantity + basket_quantity)
     query = conn.execute(f"delete from basket_table where cart_id='{cart_id}'")
-    
+
+
+
+@app.route("/basket_table_data")
+def get_all_basket_table_data():
+    # This function is returning all of the plants stock data from the basket_table table in the database.
+    conn = db_connect().connect() # connect to database
+    query = conn.execute("select * from basket_table") # This line performs query and returns json result
+    all_plants_data = [i for i in query.cursor.fetchall()]
+    return {'basket_table': all_plants_data} # Fetches the data
+
+
 
 if __name__ == '__main__':
      app.run(port='5002')
