@@ -43,6 +43,42 @@ def get_single_plant_data_browser(plant_name):
     </table>
     """
 
+#all data
+@app.route("/browser_plants_data")
+def get_all_plant_data_browser():
+    data = get_all_plants_data()
+    data = data["plants_data"]
+    print(data)
+    info = f"""
+
+    <table style="background-color:#67c16a;font-family:monospace;font-size:32px;width:100%;border:4px solid black;
+  border-collapse:collapse;padding:15px;
+  text-align:center;">
+        <tr style="border: 2px solid black;">
+            <th>Plant Name</th>
+            <th>Plant Type</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+        """
+    for plant in data:
+        plant_name = plant[0]
+        plant_type = plant[1]
+        quantity = plant[2]
+        price = plant[3]
+        row = f"""<tr style="background-color: #ccffcc;">
+            <td>{plant_name}</th>
+            <td>{plant_type}</th>
+            <td>{quantity}</th>
+            <td>{price}</th>
+        </tr>"""
+    
+        info = info + row
+
+    info = info + "</table>"
+    return info
+    
+
 
 
 
