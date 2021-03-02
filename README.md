@@ -33,6 +33,13 @@ This will open the front-end UI.
 # Tests
 To test the Python REST API, navigate to `/back_end/python` and enter the command:
 `python -m pytest -v`
+
+
+# View database in browser
+To view all the data in the plants_data table:
+
+Navigate to `http://localhost:5000/browser_plants_data` in chrome browser while Flask app is running.
+
  
 # Dependencies
 aniso8601==8.1.0
