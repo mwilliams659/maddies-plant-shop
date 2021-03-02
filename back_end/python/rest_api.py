@@ -15,13 +15,32 @@ CORS(app)
 
 
 # table browser functions
+#single plant data
 @app.route("/browser_plants_data/<plant_name>")
 def get_single_plant_data_browser(plant_name):
     data = get_single_plant_data(plant_name)
-    
+    # data = data["record"][0]
+    plant_type = data["record"][0][1]
+    quantity = data["record"][0][2]
+    price = data["record"][0][3]
     return f"""
-    <h1>{plant_name}<h1>
-    <h2>{data}<h2>
+
+    <table style="background-color:#67c16a;font-family:monospace;font-size:32px;width:100%;border:4px solid black;
+  border-collapse:collapse;padding:15px;
+  text-align:center;">
+        <tr style="border: 2px solid black;">
+            <th>Plant Name</th>
+            <th>Plant Type</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+        <tr style="background-color: #ccffcc;">
+            <td>{plant_name}</th>
+            <td>{plant_type}</th>
+            <td>{quantity}</th>
+            <td>{price}</th>
+        </tr>
+    </table>
     """
 
 
