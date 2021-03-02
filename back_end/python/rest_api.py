@@ -14,6 +14,15 @@ api = Api(app)
 CORS(app)
 
 
+# table browser functions
+@app.route("/browser_plants_data/<plant_name>")
+def get_single_plant_data_browser(plant_name):
+    data = get_single_plant_data(plant_name)
+    
+    return f"""
+    <h1>{plant_name}<h1>
+    <h2>{data}<h2>
+    """
 
 
 
