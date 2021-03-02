@@ -58,6 +58,7 @@
     font-size: 22px;
     font-family: sans-serif;
     font-style: italic;
+    border-radius: 1px;
   }
   
   .topnav i {
@@ -81,6 +82,15 @@
   .topnav a.active {
     background-color: #4CAF50;
     color: white;
+  }
+  
+  .fa:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  .fa {
+      border-radius: 12px;
   }
 
 .flex-container-parent {
@@ -124,6 +134,7 @@ button {
     text-align: center;
     font-size: 16px;
     margin: 10px;   
+    user-select: none;
 }
 
 button:hover {
@@ -154,4 +165,10 @@ h1 {
     color: #f2f2f2;
     font-size: 26px;
     text-align: center;
+}
+
+footer {
+    color: #f2f2f2;
+    text-align: center;
+    font-family: monospace;
 }

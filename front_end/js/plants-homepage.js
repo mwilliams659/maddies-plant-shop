@@ -43,7 +43,13 @@ displayStock();
 
 
 // Buy button - when clicked it will reduce the chosen stock quantity by 1
-function buyStockButton(plantName) {
-  quantity = httpGet(`http://127.0.0.1:5000/plants_data/${plantName}/purchase`);
+// function buyStockButton(plantName) {
+//   httpGet(`http://127.0.0.1:5000/plants_data/${plantName}/purchase`);
+//   location.reload();
+// }
+
+// function that triggers api add to basket function given parameters
+function addToBasket(plantName) {
+  httpGet(`http://127.0.0.1:5000/basket/${plantName}/1/cartid`);
   location.reload();
 }
