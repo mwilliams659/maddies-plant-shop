@@ -61,7 +61,7 @@
     border-radius: 1px;
   }
   
-  .topnav i {
+  .topnav i, .topnav div {
       /* display: block; */
       color: #f2f2f2;
       text-align: center;
@@ -70,6 +70,12 @@
       height: 40px; 
       width: auto; 
       float: right;
+  }
+
+  .topnav div {
+      font-size: 22px;
+      font-family: sans-serif;
+      padding-top: 25px;
   }
 
   /* Change the color of links on hover */
@@ -92,6 +98,31 @@
   .fa {
       border-radius: 12px;
   }
+
+
+  /* Cart/basket icon and item count */
+
+  .badge {
+    padding-left: 16px;
+    padding-right: 16px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+  }
+  
+  
+  #lblCartCount {
+      font-family: sans-serif;
+      font-size: 12px;
+      font-weight: bold;
+      background: #4CAF50;
+      color: rgb(0, 0, 0);
+      padding: 0 7px;
+      vertical-align: top;
+      margin-left: -10px; 
+  }  
+
+  /*  */
 
 .flex-container-parent {
     display: flex;
