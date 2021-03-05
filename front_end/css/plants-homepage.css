@@ -48,7 +48,7 @@
 
 
   /* Style the links inside the navigation bar */
-  .topnav a {
+  .header {
     float: left;
     display: block;
     color: #f2f2f2;
@@ -59,15 +59,16 @@
     font-family: sans-serif;
     font-style: italic;
     border-radius: 1px;
+    height: 30px;
   }
   
+  /* Style the icons on the navigation bar */
   .topnav i, .topnav div {
-      /* display: block; */
       color: #f2f2f2;
       text-align: center;
       padding: 14px 16px;
       cursor: pointer;
-      height: 40px; 
+      height: 30px; 
       width: auto; 
       float: right;
   }
@@ -75,24 +76,26 @@
   .topnav div {
       font-size: 22px;
       font-family: sans-serif;
-      padding-top: 25px;
+      padding-top: 20px;
   }
 
-  /* Change the color of links on hover */
-  .topnav a:hover {
-    background-color: #ddd;
-    color: black;
+  /* Change the colour of links on hover */
+  .header:hover {
+    background-color: #f2f2f2;
+    color: #000000;
   }
   
   /* Add an active class to highlight the current page */
   .topnav a.active {
     background-color: #4CAF50;
-    color: white;
+    color: #f2f2f2;
   }
+
+  /* Change the colour of the icons on hover */
   
   .fa:hover {
-    background-color: #ddd;
-    color: black;
+    background-color: #f2f2f2;
+    color: #000000;
   }
 
   .fa {
@@ -116,7 +119,7 @@
       font-size: 12px;
       font-weight: bold;
       background: #4CAF50;
-      color: rgb(0, 0, 0);
+      color: #000000;
       padding: 0 7px;
       vertical-align: top;
       margin-left: -10px; 
