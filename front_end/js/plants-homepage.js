@@ -50,9 +50,7 @@ displayStock();
 
 // function that triggers api add to basket function given parameters
 function addToBasket(plantName) {
-  console.log(plantName)
   quantity = document.getElementById(`quantitySelectorButton-${plantName}`).value;
-  console.log(quantity)
   httpGet(`http://127.0.0.1:5000/basket/${plantName}/${quantity}/cartid`);
   location.reload();
 }
