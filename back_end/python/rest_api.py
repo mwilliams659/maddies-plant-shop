@@ -192,6 +192,8 @@ def get_all_basket_table_data():
     all_plants_data = [i for i in query.cursor.fetchall()]
     return {'basket_table': all_plants_data} # Fetches the data
 
+
+# NEED TO MAKE A TEST FOR THIS!
 @app.route("/basket_table_data/all_items_quantity")
 def get_basket_table_quantity():
     #This function returns the quantity of all items in the basket database

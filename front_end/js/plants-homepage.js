@@ -50,9 +50,11 @@ displayStock();
 
 // function that triggers api add to basket function given parameters
 function addToBasket(plantName) {
-  httpGet(`http://127.0.0.1:5000/basket/${plantName}/1/cartid`);
+  console.log(plantName)
+  quantity = document.getElementById(`quantitySelectorButton-${plantName}`).value;
+  console.log(quantity)
+  httpGet(`http://127.0.0.1:5000/basket/${plantName}/${quantity}/cartid`);
   location.reload();
-  quantitySelector();
 }
 // displays basket quantities in basket icon
 function displayBasketQuantity() {
@@ -61,8 +63,3 @@ function displayBasketQuantity() {
 }
 
 displayBasketQuantity();
-
-// Quantity selector appears once button is pressed
-// function quantitySelector() {
-//   document.getElementById('quantitySelectorButton').style.display = "block";
-// }
