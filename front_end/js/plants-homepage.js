@@ -52,4 +52,17 @@ displayStock();
 function addToBasket(plantName) {
   httpGet(`http://127.0.0.1:5000/basket/${plantName}/1/cartid`);
   location.reload();
+  quantitySelector();
 }
+// displays basket quantities in basket icon
+function displayBasketQuantity() {
+  basketQuantity = httpGet(`http://127.0.0.1:5000/basket_table_data/all_items_quantity`)
+  document.getElementById('lblCartCount').innerHTML = basketQuantity;
+}
+
+displayBasketQuantity();
+
+// Quantity selector appears once button is pressed
+// function quantitySelector() {
+//   document.getElementById('quantitySelectorButton').style.display = "block";
+// }

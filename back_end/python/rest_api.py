@@ -192,6 +192,16 @@ def get_all_basket_table_data():
     all_plants_data = [i for i in query.cursor.fetchall()]
     return {'basket_table': all_plants_data} # Fetches the data
 
+@app.route("/basket_table_data/all_items_quantity")
+def get_basket_table_quantity():
+    #This function returns the quantity of all items in the basket database
+    conn = db_connect().connect()
+    query = conn.execute("select quantity from basket_table")
+    jsonQuantities = [i for i in query.cursor]
+    basketQuantity = 0
+    for quantity in jsonQuantities:
+        basketQuantity = basketQuantity + quantity[0]
+    return str(basketQuantity)
 
 
 if __name__ == '__main__':
