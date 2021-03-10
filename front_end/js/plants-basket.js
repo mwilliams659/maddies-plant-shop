@@ -39,18 +39,39 @@ function displayBasket() {
   // console.log(basketData['basket_table'])
   let data = JSON.parse(allBasketData);
   // console.log(data['basket_table'][0]) - this displays the arrays in the baskettable. Uses the index to access the values.
-  plantData = data['basket_table'][0]
-  plantName = data['basket_table'][0][1]
-  plantQuantity = data['basket_table'][0][4]
-  plantPrice = data['basket_table'][0][3]
-  plantImage = "img_" + plantName + ".jpg"
-  document.getElementById('item_pic').src='images/' + plantImage;
-  document.getElementById('item_name').innerHTML = plantName;
-  document.getElementById('item_quantity').innerHTML = plantQuantity;
-  document.getElementById('item_price').innerHTML = '£' + plantPrice * plantQuantity;
-  for (item in plantData) {
+  plantData = data['basket_table']
+  
+  // document.getElementById('item_pic').src='images/' + plantImage;
+  // document.getElementById('item_name').innerHTML = plantName;
+  // document.getElementById('item_quantity').innerHTML = plantQuantity;
+  // document.getElementById('item_price').innerHTML = '£' + plantPrice * plantQuantity;
+  // Find a <table> element with id="myTable":
+  var table = document.getElementById("basket_table");
 
-  }
+// For loop to loop through items in the basket table. Creates new cells to import data into.
+  for (i = 0; i < plantData.length; i++) {
+    plantName = plantData[i][1]
+    plantQuantity = plantData[i][4]
+    plantPrice = plantData[i][3]
+    plantImage = "images/img_" + plantName + ".jpg"
+  
+    
+  // Create an empty <tr> element and add it to the 1st position of the table:
+    var row = table.insertRow(i+1);
+
+    // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+    var pictureCell = row.insertCell(0);
+    var nameCell = row.insertCell(1);
+    var quantityCell = row.insertCell(2);
+    var priceCell = row.insertCell(3);
+
+    // Add some text to the new cells:
+    pictureCell.innerHTML="<img src='" + plantImage + "' alt='" + plantName + " img missing'/>";
+    nameCell.innerHTML = plantName;
+    quantityCell.innerHTML = plantQuantity;
+    priceCell.innerHTML = '£' +plantPrice;
+
+    }
   
 }
 displayBasket();

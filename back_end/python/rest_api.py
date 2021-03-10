@@ -203,29 +203,44 @@ def update_quantity(plant_name, quantity):
 
 @app.route('/basket/<plant_name>/<quantity>/<cart_id>')
 def add_to_basket1(cart_id, plant_name, quantity):
+    # Check if there is already an existing plant with same credentials in basket table
+    record = get_record_from_basket_table(cart_id, plant_name)["record"]
     conn = db_connect().connect()
     #checks the quantity and minuses it off. Changing the quantity in the plants_data table.
     #stock/plants_data table
     oldquantity = int(get_plant_quantity(plant_name))
     new_quantity = oldquantity - int(quantity)
     update_quantity(plant_name, new_quantity)
-    #basket_table data
-    price = get_plant_price(plant_name)
-    time_stamp = datetime.datetime.now()
-    query = conn.execute(f"INSERT INTO basket_table (id, plant_name, cart_id, price, quantity, created_at, updated_at) VALUES (1, '{plant_name}', '{cart_id}', '{price}', '{quantity}', '{time_stamp}', 'time');")
-    return f"{plant_name} added to basket"
+    if len(record) == 0:
+        #basket_table data
+        price = get_plant_price(plant_name)
+        time_stamp = datetime.datetime.now()
+        query = conn.execute(f"INSERT INTO basket_table (id, plant_name, cart_id, price, quantity, created_at, updated_at) VALUES (1, '{plant_name}', '{cart_id}', '{price}', '{quantity}', '{time_stamp}', 'time');")
+        return f"{plant_name} added to basket"
+    oldquantity = record[0][4]
+    new_quantity = int(oldquantity) + int(quantity)
+    query = conn.execute(f"UPDATE basket_table set quantity = {new_quantity} where cart_id = '{cart_id}' and plant_name = '{plant_name}'")
+    # query = conn.execute(f"UPDATE basket_table set quantity = 2 where cart_id ='cartid' and plant_name = 'cactus';")
+    return "Basket updated"
 
-#function which will get one record from the basket_table table
+#function which will get one basket from the basket_table table
 @app.route('/basket/<cart_id>')
-def get_record_from_basket_table(cart_id):
+def get_basket_from_basket_table(cart_id):
     conn = db_connect().connect() # connect to database
     query = conn.execute(f"select * from basket_table where cart_id='{cart_id}'")
+    return {'basket': [i for i in query.cursor]} # Fetches the data
+
+#function which will get one record from the basket_table table
+@app.route('/basket/<cart_id>/<plant_name>')
+def get_record_from_basket_table(cart_id, plant_name):
+    conn = db_connect().connect() # connect to database
+    query = conn.execute(f"select * from basket_table where cart_id='{cart_id}' and plant_name='{plant_name}'")
     return {'record': [i for i in query.cursor]} # Fetches the data
 
 #function which will remove one record from the basket_table table
 def remove_record_from_basket_table(cart_id):
     conn = db_connect().connect()
-    basket_record = get_record_from_basket_table(cart_id)['record']
+    basket_record = get_basket_from_basket_table(cart_id)['record']
     # import pytest
     # pytest.set_trace()
     # print(basket_record)

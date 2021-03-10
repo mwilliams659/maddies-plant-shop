@@ -49,3 +49,6 @@ palm_tree|Outdoor|5|25
 sqlite3 plants_database.db
 
 CREATE TABLE basket_table(id varchar(25), plant_name varchar(25), cart_id varchar(25), price int(4), quantity int(4), created_at varchar(25), updated_at varchar(25));
+
+
+UPDATE basket_table set quantity = 2 where cart_id ='cartid' and plant_name = 'cactus';
