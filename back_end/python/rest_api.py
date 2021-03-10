@@ -36,10 +36,10 @@ def get_single_plant_data_browser(plant_name):
             <th>Price</th>
         </tr>
         <tr style="background-color: #ccffcc;">
-            <td>{plant_name}</th>
-            <td>{plant_type}</th>
-            <td>{quantity}</th>
-            <td>{price}</th>
+            <td>{plant_name}</td>
+            <td>{plant_type}</td>
+            <td>{quantity}</td>
+            <td>{price}</td>
         </tr>
     </table>
     """
@@ -69,10 +69,10 @@ def get_all_plant_data_browser():
         quantity = plant[2]
         price = plant[3]
         row = f"""<tr style="background-color: #ccffcc;">
-            <td>{plant_name}</th>
-            <td>{plant_type}</th>
-            <td>{quantity}</th>
-            <td>{price}</th>
+            <td>{plant_name}</td>
+            <td>{plant_type}</td>
+            <td>{quantity}</td>
+            <td>{price}</td>
         </tr>"""
     
         info = info + row
@@ -113,12 +113,12 @@ def get_all_basket_data_browser():
         updated_at = plant[6]
         row = f"""<tr style="background-color: #ccffcc;">
             <td>{id}</th>
-            <td>{plant_name}</th>
-            <td>{cart_id}</th>
-            <td>{quantity}</th>
-            <td>{price}</th>
-            <td>{created_at}</th>
-            <td>{updated_at}</th>
+            <td>{plant_name}</td>
+            <td>{cart_id}</td>
+            <td>{quantity}</td>
+            <td>{price}</td>
+            <td>{created_at}</td>
+            <td>{updated_at}</td>
         </tr>"""
     
         info = info + row
@@ -259,6 +259,7 @@ def get_basket_table_quantity():
     for quantity in jsonQuantities:
         basketQuantity = basketQuantity + quantity[0]
     return str(basketQuantity)
+
 
 
 if __name__ == '__main__':
