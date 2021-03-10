@@ -40,6 +40,10 @@ To view all the data in the plants_data table:
 
 Navigate to `http://localhost:5000/browser_plants_data` in chrome browser while Flask app is running.
 
+To view all the data in the basket_table table:
+
+Navigate to `http://localhost:5000/browser_basket_table` in chrome browser while Flask app is running.
+
  
 # Dependencies
 aniso8601==8.1.0
