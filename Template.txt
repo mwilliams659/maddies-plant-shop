@@ -13,6 +13,9 @@ INSERT INTO plants_data (plant_name, plant_type, quantity, price) VALUES ("Lemon
 INSERT INTO plants_data (plant_name, plant_type, quantity, price) VALUES ("Palm Tree", "Outdoor", 5, 65);
 
 
+DELETE FROM table
+WHERE search_condition;
+
 UPDATE table_name
 SET column1 = value1,
     column2 = value2,

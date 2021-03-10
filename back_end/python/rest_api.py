@@ -28,6 +28,7 @@ def get_single_plant_data_browser(plant_name):
     <table style="background-color:#67c16a;font-family:monospace;font-size:32px;width:100%;border:4px solid black;
   border-collapse:collapse;padding:15px;
   text-align:center;">
+        <caption>Single Plant Data Table</caption
         <tr style="border: 2px solid black;">
             <th>Plant Name</th>
             <th>Plant Type</th>
@@ -54,6 +55,7 @@ def get_all_plant_data_browser():
     <table style="background-color:#67c16a;font-family:monospace;font-size:32px;width:100%;border:4px solid black;
   border-collapse:collapse;padding:15px;
   text-align:center;">
+        <caption>Plants Data Table</caption
         <tr style="border: 2px solid black;">
             <th>Plant Name</th>
             <th>Plant Type</th>
@@ -78,6 +80,59 @@ def get_all_plant_data_browser():
     info = info + "</table>"
     return info
     
+#basket table browser function
+@app.route("/browser_basket_table")
+def get_all_basket_data_browser():
+    data = get_all_basket_table_data()
+    data = data["basket_table"]
+    print(data)
+    info = f"""
+
+    <table style="background-color:#67c16a;font-family:monospace;font-size:24px;width:100%;border:4px solid black;
+  border-collapse:collapse;padding:15px;
+  text-align:center;">
+        <caption>Basket Table</caption
+        <tr style="border: 2px solid black;">
+            <th>ID</th>
+            <th>Plant Name</th>
+            <th>Cart ID</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Created at</th>
+            <th>Updated at</th>
+
+        </tr>
+        """
+    for plant in data:
+        id = plant[0]
+        plant_name = plant[1]
+        cart_id = plant[2]
+        price = plant[3]
+        quantity = plant[4]
+        created_at = plant[5]
+        updated_at = plant[6]
+        row = f"""<tr style="background-color: #ccffcc;">
+            <td>{id}</th>
+            <td>{plant_name}</th>
+            <td>{cart_id}</th>
+            <td>{quantity}</th>
+            <td>{price}</th>
+            <td>{created_at}</th>
+            <td>{updated_at}</th>
+        </tr>"""
+    
+        info = info + row
+
+    info = info + "</table>"
+    return info
+
+
+
+
+
+
+
+
 
 
 
