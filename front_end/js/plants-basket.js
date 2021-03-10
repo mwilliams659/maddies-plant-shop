@@ -39,12 +39,18 @@ function displayBasket() {
   // console.log(basketData['basket_table'])
   let data = JSON.parse(allBasketData);
   // console.log(data['basket_table'][0]) - this displays the arrays in the baskettable. Uses the index to access the values.
+  plantData = data['basket_table'][0]
   plantName = data['basket_table'][0][1]
   plantQuantity = data['basket_table'][0][4]
   plantPrice = data['basket_table'][0][3]
+  plantImage = "img_" + plantName + ".jpg"
+  document.getElementById('item_pic').src='images/' + plantImage;
   document.getElementById('item_name').innerHTML = plantName;
   document.getElementById('item_quantity').innerHTML = plantQuantity;
-  document.getElementById('item_price').innerHTML = plantPrice;
+  document.getElementById('item_price').innerHTML = '£' + plantPrice * plantQuantity;
+  for (item in plantData) {
+
+  }
   
 }
 displayBasket();
