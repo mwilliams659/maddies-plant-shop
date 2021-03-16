@@ -240,9 +240,6 @@ def get_record_from_basket_table(cart_id, plant_name):
 def remove_record_from_basket_table(cart_id):
     conn = db_connect().connect()
     basket_record = get_basket_from_basket_table(cart_id)['record']
-    # import pytest
-    # pytest.set_trace()
-    # print(basket_record)
     for plant in basket_record:
         basket_quantity = plant[4]
         plant_name = plant[1]

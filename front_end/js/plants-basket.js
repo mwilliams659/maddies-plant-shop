@@ -47,6 +47,7 @@ function displayBasket() {
   // document.getElementById('item_price').innerHTML = '£' + plantPrice * plantQuantity;
   // Find a <table> element with id="myTable":
   var table = document.getElementById("basket_table");
+  let subTotal = 0;
 
 // For loop to loop through items in the basket table. Creates new cells to import data into.
   for (i = 0; i < plantData.length; i++) {
@@ -72,7 +73,12 @@ function displayBasket() {
     quantityCell.innerHTML = plantQuantity;
     priceCell.innerHTML = '£' +plantPrice;
 
+    subTotal = subTotal + plantPrice;
+  
+
     }
+  document.getElementById("subtotal").innerHTML = "Subtotal: £" + subTotal;
+  console.log(subTotal);
   
 }
 displayBasket();
@@ -83,3 +89,8 @@ function replaceUnderscore(plantName) {
   plantName = plantName.replaceAll('_', ' ');
   return plantName.charAt(0).toUpperCase() + plantName.slice(1);
 }
+
+// Calculate total price of basket
+// function calculateSubTotal() {
+//   subTotal = plantQuantity
+// }
