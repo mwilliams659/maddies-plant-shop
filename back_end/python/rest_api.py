@@ -220,7 +220,6 @@ def add_to_basket1(cart_id, plant_name, quantity):
     oldquantity = record[0][4]
     new_quantity = int(oldquantity) + int(quantity)
     query = conn.execute(f"UPDATE basket_table set quantity = {new_quantity} where cart_id = '{cart_id}' and plant_name = '{plant_name}'")
-    # query = conn.execute(f"UPDATE basket_table set quantity = 2 where cart_id ='cartid' and plant_name = 'cactus';")
     return "Basket updated"
 
 #function which will get one basket from the basket_table table

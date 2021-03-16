@@ -50,10 +50,11 @@ function displayBasket() {
 
 // For loop to loop through items in the basket table. Creates new cells to import data into.
   for (i = 0; i < plantData.length; i++) {
-    plantName = plantData[i][1]
-    plantQuantity = plantData[i][4]
-    plantPrice = plantData[i][3]
-    plantImage = "images/img_" + plantName + ".jpg"
+    let plantName = plantData[i][1]
+    let plantQuantity = plantData[i][4]
+    let plantPrice = plantData[i][3]
+    let plantImage = "images/img_" + plantName + ".jpg"
+
   
     
   // Create an empty <tr> element and add it to the 1st position of the table:
@@ -67,7 +68,7 @@ function displayBasket() {
 
     // Add some text to the new cells:
     pictureCell.innerHTML="<img src='" + plantImage + "' alt='" + plantName + " img missing'/>";
-    nameCell.innerHTML = plantName;
+    nameCell.innerHTML = replaceUnderscore(plantName);
     quantityCell.innerHTML = plantQuantity;
     priceCell.innerHTML = '£' +plantPrice;
 
@@ -76,3 +77,9 @@ function displayBasket() {
 }
 displayBasket();
 
+
+// Change instances of underscores to spaces and capitalise first letter of word
+function replaceUnderscore(plantName) {
+  plantName = plantName.replaceAll('_', ' ');
+  return plantName.charAt(0).toUpperCase() + plantName.slice(1);
+}
