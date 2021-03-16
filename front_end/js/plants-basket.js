@@ -66,12 +66,16 @@ function displayBasket() {
     var nameCell = row.insertCell(1);
     var quantityCell = row.insertCell(2);
     var priceCell = row.insertCell(3);
+    var deleteCell = row.insertCell(4);
 
     // Add some text to the new cells:
     pictureCell.innerHTML="<img src='" + plantImage + "' alt='" + plantName + " img missing'/>";
     nameCell.innerHTML = replaceUnderscore(plantName);
     quantityCell.innerHTML = plantQuantity;
     priceCell.innerHTML = '£' +plantPrice;
+    deleteCell.innerHTML = '<i class="fa fa-trash" title="Delete item from basket" style="font-size:60px;cursor:pointer;border-radius:10px"></i>';
+
+
 
     subTotal = subTotal + plantPrice;
   
