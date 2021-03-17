@@ -93,12 +93,12 @@
 
   /* Change the colour of the icons on hover */
   
-  .fa:hover {
+  .head:hover {
     background-color: #f2f2f2;
     color: #000000;
   }
 
-  .fa {
+  .head {
       border-radius: 2px;
   }
 
@@ -162,16 +162,14 @@ body {
 button {
     background-color: #4CAF50;
     border: black;
-    border-radius: 1rem;
+    border-radius: 3px;
     color: white;
-    padding: 15px 32px;
+    padding: 5px 15px;
     text-align: center;
     font-size: 16px;
     margin: 10px;   
     user-select: none;
     font-family: 'Zilla Slab', serif;
-    box-shadow: 3px 3px 3px #2c2b2b;
-
 }
 
 button:hover {

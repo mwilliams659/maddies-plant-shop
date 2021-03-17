@@ -23,6 +23,10 @@ function httpGet(theUrl) {
   return xmlHttpReq.responseText;
 }
 
+// All of the plants in the database
+plantsList = ['bonsai', 'peace_lily', 'aloe_vera', 'monstera_deliciosa', 'cactus', 'spider_plant', 'snake_plant', 'devils_ivy',  'olive_tree', 'lemon_tree', 'palm_tree']
+
+
   // displays basket quantities in basket icon
 function displayBasketQuantity() {
     basketQuantity = httpGet(`http://127.0.0.1:5000/basket_table_data/all_items_quantity`)
@@ -31,6 +35,14 @@ function displayBasketQuantity() {
   
   displayBasketQuantity();
 
+
+// Delete item from basket table and put back into plants data database
+function deleteItemFromBasket(cart_id, plant_name) {
+  httpGet(`http://127.0.0.1:5000/basket/${cart_id}/${plant_name}/removeitem`);
+  location.reload();
+
+
+}
 
 //  Display All Basket Table Data
 
@@ -73,7 +85,7 @@ function displayBasket() {
     nameCell.innerHTML = replaceUnderscore(plantName);
     quantityCell.innerHTML = plantQuantity;
     priceCell.innerHTML = '£' +plantPrice;
-    deleteCell.innerHTML = '<i class="fa fa-trash" title="Delete item from basket" style="font-size:60px;cursor:pointer;border-radius:10px"></i>';
+    deleteCell.innerHTML = `<button class="deleteButton" onclick="deleteItemFromBasket('cartid', '${plantName}')"><i class="fa fa-trash" title="Delete item from basket" style="font-size:36px"></i></button>`;
 
 
 
@@ -81,10 +93,8 @@ function displayBasket() {
   
 
     }
-  document.getElementById("subtotal").innerHTML = "Subtotal: £" + subTotal;
-  console.log(subTotal);
-  
-}
+  document.getElementById("subtotal").innerHTML = "Subtotal: £" + subTotal;  
+};
 displayBasket();
 
 
@@ -94,7 +104,11 @@ function replaceUnderscore(plantName) {
   return plantName.charAt(0).toUpperCase() + plantName.slice(1);
 }
 
-// Calculate total price of basket
-// function calculateSubTotal() {
-//   subTotal = plantQuantity
+
+
+// THIS IS THE ADD TO BASKET FUNCTION ---- USING THIS AS A REFERENCE OF WHAT TO USE
+// function addToBasket(plantName) {
+//   quantity = document.getElementById(`quantitySelectorButton-${plantName}`).value;
+//   httpGet(`http://127.0.0.1:5000/basket/${plantName}/${quantity}/cartid`);
+//   location.reload();
 // }
