@@ -236,22 +236,24 @@ table, th, td {
   border: 1px solid black;
 }
 
-td {
-    max-width: 15%;
-}
 
 table {
   background-color:#67c16a;
   font-family:monospace;
   font-size:24px;
-  width:60%;
+  max-width: 50%;
   border:4px solid black;
   border-collapse:collapse;
-  padding:15px;
+  /* padding:15px; */
   text-align:center;
+}
+
+tbody {
+    max-width: 50%;
 }
 
 i {
     color: #f2f2f2;
     size: 100px;
 }
+

@@ -53,48 +53,51 @@ function displayBasket() {
   // console.log(data['basket_table'][0]) - this displays the arrays in the baskettable. Uses the index to access the values.
   plantData = data['basket_table']
   
-  // document.getElementById('item_pic').src='images/' + plantImage;
-  // document.getElementById('item_name').innerHTML = plantName;
-  // document.getElementById('item_quantity').innerHTML = plantQuantity;
-  // document.getElementById('item_price').innerHTML = '£' + plantPrice * plantQuantity;
-  // Find a <table> element with id="myTable":
   var table = document.getElementById("basket_table");
-  let subTotal = 0;
+  if (plantData.length > 0) {
+    table.style.display = "block";
+    let subTotal = 0;
 
-// For loop to loop through items in the basket table. Creates new cells to import data into.
-  for (i = 0; i < plantData.length; i++) {
-    let plantName = plantData[i][1]
-    let plantQuantity = plantData[i][4]
-    let plantPrice = plantData[i][3]
-    let plantImage = "images/img_" + plantName + ".jpg"
-
-  
+    // For loop to loop through items in the basket table. Creates new cells to import data into.
+      for (i = 0; i < plantData.length; i++) {
+        let plantName = plantData[i][1]
+        let plantQuantity = plantData[i][4]
+        let plantPrice = plantData[i][3]
+        let plantImage = "images/img_" + plantName + ".jpg"
     
-  // Create an empty <tr> element and add it to the 1st position of the table:
-    var row = table.insertRow(i+1);
+      
+        
+      // Create an empty <tr> element and add it to the 1st position of the table:
+        var row = table.insertRow(i+1);
+    
+        // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+        var pictureCell = row.insertCell(0);
+        var nameCell = row.insertCell(1);
+        var quantityCell = row.insertCell(2);
+        var priceCell = row.insertCell(3);
+        var deleteCell = row.insertCell(4);
+    
+        // Add some text to the new cells:
+        pictureCell.innerHTML="<img src='" + plantImage + "' alt='" + plantName + " img missing'/>";
+        nameCell.innerHTML = replaceUnderscore(plantName);
+        quantityCell.innerHTML = plantQuantity;
+        priceCell.innerHTML = '£' +plantPrice;
+        deleteCell.innerHTML = `<button class="deleteButton" onclick="deleteItemFromBasket('cartid', '${plantName}')"><i class="fa fa-trash" title="Delete item from basket" style="font-size:36px"></i></button>`;
+    
+    
+    
+        subTotal = subTotal + plantPrice;
+      
+    
+        }
+      document.getElementById("subtotal").innerHTML = "Subtotal: £" + subTotal;  
+  } else {
+    document.getElementById("emptyBasket").innerHTML = "Your basket is currently empty.";
+  }
 
-    // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
-    var pictureCell = row.insertCell(0);
-    var nameCell = row.insertCell(1);
-    var quantityCell = row.insertCell(2);
-    var priceCell = row.insertCell(3);
-    var deleteCell = row.insertCell(4);
 
-    // Add some text to the new cells:
-    pictureCell.innerHTML="<img src='" + plantImage + "' alt='" + plantName + " img missing'/>";
-    nameCell.innerHTML = replaceUnderscore(plantName);
-    quantityCell.innerHTML = plantQuantity;
-    priceCell.innerHTML = '£' +plantPrice;
-    deleteCell.innerHTML = `<button class="deleteButton" onclick="deleteItemFromBasket('cartid', '${plantName}')"><i class="fa fa-trash" title="Delete item from basket" style="font-size:36px"></i></button>`;
-
-
-
-    subTotal = subTotal + plantPrice;
-  
-
-    }
-  document.getElementById("subtotal").innerHTML = "Subtotal: £" + subTotal;  
 };
+
 displayBasket();
 
 
@@ -104,11 +107,3 @@ function replaceUnderscore(plantName) {
   return plantName.charAt(0).toUpperCase() + plantName.slice(1);
 }
 
-
-
-// THIS IS THE ADD TO BASKET FUNCTION ---- USING THIS AS A REFERENCE OF WHAT TO USE
-// function addToBasket(plantName) {
-//   quantity = document.getElementById(`quantitySelectorButton-${plantName}`).value;
-//   httpGet(`http://127.0.0.1:5000/basket/${plantName}/${quantity}/cartid`);
-//   location.reload();
-// }
