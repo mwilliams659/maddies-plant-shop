@@ -9,11 +9,14 @@ from rest_api import get_plant_quantity
 from rest_api import single_plant_bought
 from rest_api import update_stock_quantity
 from rest_api import db_connect
-# from rest_api import add_to_basket
 from rest_api import add_to_basket1
 from rest_api import get_basket_from_basket_table
 from rest_api import remove_record_from_basket_table
 from rest_api import get_all_basket_table_data
+from rest_api import get_record_from_basket_table
+from rest_api import remove_one_item_from_basket_table
+from rest_api import get_basket_table_quantity
+
 
 db_connect = create_engine('sqlite:///tests/database/test_plants_database.db')
 
@@ -121,3 +124,45 @@ def test_get_all_basket_table_data(mock_db_connect):
     # Remove record
     remove_record_from_basket_table('test_cart_id1')
     remove_record_from_basket_table('test_cart_id2')
+
+
+
+@freeze_time("2020-04-11")
+@mock.patch("rest_api.db_connect")
+def test_get_record_from_basket_table(mock_db_connect):
+    mock_db_connect.return_value = db_connect
+    #add item to basket
+    add_to_basket1('test_cart_id1', 'Bonsai', 1)
+    response = get_record_from_basket_table('test_cart_id1', 'Bonsai')
+    assert response == {'record': [('1', 'Bonsai', 'test_cart_id1', 20, 1, '2020-04-11 00:00:00', 'time')]}
+    remove_record_from_basket_table('test_cart_id1')
+
+@freeze_time("2020-04-11")
+@mock.patch("rest_api.db_connect")
+def test_remove_one_item_from_basket_table(mock_db_connect):
+    mock_db_connect.return_value = db_connect
+    add_to_basket1('test_cart_id1', 'Bonsai', 1)
+    # we need to make sure that the item gets added and removed so we should store what is currently in basket and then show that it is no longer there
+        
+    old_stock_quantity = get_plant_quantity('Bonsai')
+    
+    remove_one_item_from_basket_table('test_cart_id1', 'Bonsai')
+    new_stock_quantity = get_plant_quantity('Bonsai')
+   
+    assert get_basket_from_basket_table('test_cart_id1') == {'basket': []}
+    assert int(new_stock_quantity) == int(old_stock_quantity) + 1
+
+
+@freeze_time("2020-04-11")
+@mock.patch("rest_api.db_connect")
+def test_get_basket_table_quantity(mock_db_connect):
+    mock_db_connect.return_value = db_connect
+    add_to_basket1('test_cart_id1', 'Bonsai', 2)
+    add_to_basket1('test_cart_id1', 'Peace Lily', 1)
+    response = get_basket_table_quantity()
+    assert response == '3'
+    remove_record_from_basket_table('test_cart_id1')
+
+
+
+# Browser JSON to HTML tests
