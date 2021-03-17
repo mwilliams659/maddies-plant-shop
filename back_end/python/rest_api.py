@@ -186,18 +186,6 @@ def update_stock_quantity(plant_name, quantity):
     return f"{plant_name} quantity updated to {quantity}"
 
 
-#This function is the add_to_basket1 function before it got finalised. Keeping (uncommented)for now
-# @app.route('/plants_data/<plant_name>/<quantity>/<cart_id>')
-# def add_to_basket(cart_id, plant_name, quantity):
-#     conn = db_connect().connect()
-#     price = get_plant_price(plant_name)
-#     time_stamp = datetime.datetime.now()
-#     query = conn.execute(f"INSERT INTO basket_table (id, plant_name, cart_id, price, quantity, created_at, updated_at) VALUES (1, '{plant_name}', '{cart_id}', '{price}', '{quantity}', '{time_stamp}', 'time');")
-#     return f"{plant_name} added to basket"
-
-
-
-
 
 # basket_table functions:
 
@@ -236,11 +224,11 @@ def get_record_from_basket_table(cart_id, plant_name):
     query = conn.execute(f"select * from basket_table where cart_id='{cart_id}' and plant_name='{plant_name}'")
     return {'record': [i for i in query.cursor]} # Fetches the data
 
-#function which will remove entire basket from the basket_table table
+#function which will remove entire basket record from the basket_table table
 @app.route('/basket/<cart_id>/removebasket')
 def remove_record_from_basket_table(cart_id):
     conn = db_connect().connect()
-    basket_record = get_basket_from_basket_table(cart_id)['record']
+    basket_record = get_basket_from_basket_table(cart_id)['basket']
     for plant in basket_record:
         basket_quantity = plant[4]
         plant_name = plant[1]

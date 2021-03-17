@@ -34,7 +34,6 @@ for(i = 0; i < (plantsList).length; i++  ){
 
 function displayStock() {
   for(i = 0; i < (plantsList).length; i++ ) {
-    console.log(plantsList[i]);
     document.getElementById(`${plantsList[i]}-stock`).innerHTML = plantsQuantities[i] + " available";
   }
 }
