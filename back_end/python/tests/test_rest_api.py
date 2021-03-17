@@ -2,6 +2,7 @@ import mock
 import pytest
 from freezegun import freeze_time
 from sqlalchemy import create_engine
+from bs4 import BeautifulSoup
 from rest_api import get_all_plants_data
 from rest_api import get_single_plant_data
 from rest_api import get_plant_price
@@ -16,6 +17,9 @@ from rest_api import get_all_basket_table_data
 from rest_api import get_record_from_basket_table
 from rest_api import remove_one_item_from_basket_table
 from rest_api import get_basket_table_quantity
+from rest_api import get_single_plant_data_browser
+from rest_api import get_all_plant_data_browser
+from rest_api import get_all_basket_data_browser
 
 
 db_connect = create_engine('sqlite:///tests/database/test_plants_database.db')
@@ -143,7 +147,7 @@ def test_remove_one_item_from_basket_table(mock_db_connect):
     mock_db_connect.return_value = db_connect
     add_to_basket1('test_cart_id1', 'Bonsai', 1)
     # we need to make sure that the item gets added and removed so we should store what is currently in basket and then show that it is no longer there
-        
+    
     old_stock_quantity = get_plant_quantity('Bonsai')
     
     remove_one_item_from_basket_table('test_cart_id1', 'Bonsai')
@@ -166,3 +170,22 @@ def test_get_basket_table_quantity(mock_db_connect):
 
 
 # Browser JSON to HTML tests
+
+
+@mock.patch("rest_api.db_connect")
+def test_get_single_plant_data_browser(mock_db_connect):
+    mock_db_connect.return_value = db_connect
+    response = get_single_plant_data_browser('Bonsai')
+    assert bool(BeautifulSoup(response, "html.parser").find()) == True
+
+@mock.patch("rest_api.db_connect")
+def test_get_all_plant_data_browser(mock_db_connect):
+    mock_db_connect.return_value = db_connect
+    response = get_all_plant_data_browser()
+    assert bool(BeautifulSoup(response, "html.parser").find()) == True
+
+@mock.patch("rest_api.db_connect")
+def test_get_all_basket_data_browser(mock_db_connect):
+    mock_db_connect.return_value = db_connect
+    response = get_all_basket_data_browser()
+    assert bool(BeautifulSoup(response, "html.parser").find()) == True
