@@ -86,7 +86,7 @@ function displayBasket() {
     
     
     
-        subTotal = subTotal + plantPrice;
+        subTotal = subTotal + plantPrice * plantQuantity;
       
     
         }

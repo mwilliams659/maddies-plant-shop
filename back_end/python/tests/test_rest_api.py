@@ -171,7 +171,6 @@ def test_get_basket_table_quantity(mock_db_connect):
 
 # Browser JSON to HTML tests
 
-
 @mock.patch("rest_api.db_connect")
 def test_get_single_plant_data_browser(mock_db_connect):
     mock_db_connect.return_value = db_connect
@@ -189,3 +188,4 @@ def test_get_all_basket_data_browser(mock_db_connect):
     mock_db_connect.return_value = db_connect
     response = get_all_basket_data_browser()
     assert bool(BeautifulSoup(response, "html.parser").find()) == True
+
