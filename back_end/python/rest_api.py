@@ -14,6 +14,22 @@ api = Api(app)
 CORS(app)
 
 
+
+
+# restore plants_data quantities to 100 and basket table quantities to 0
+@app.route("/browser_plants_data/restore_plants_data")
+def restore_quantities_plants_data():
+    conn = db_connect().connect()
+    query = conn.execute(f"update plants_data set quantity=100")
+    return f"all quantity updated to 100"
+
+@app.route("/browser_basket_table/restore_basket_table")
+def restore_basket_table_to_zero():
+    conn = db_connect().connect()
+    query = conn.execute(f"update basket_table set quantity=0")
+    return f"all quantity updated to 0"
+
+
 # table browser functions
 #single plant data
 @app.route("/browser_plants_data/<plant_name>")
@@ -284,3 +300,7 @@ def get_basket_table_quantity():
 
 if __name__ == '__main__':
      app.run(port='5002')
+
+
+
+    
