@@ -26,8 +26,9 @@ def restore_quantities_plants_data():
 @app.route("/browser_basket_table/restore_basket_table")
 def restore_basket_table_to_zero():
     conn = db_connect().connect()
-    query = conn.execute(f"update basket_table set quantity=0")
+    query = conn.execute(f"delete from basket_table")
     return f"all quantity updated to 0"
+    restore_quantities_plants_data()
 
 
 # table browser functions
