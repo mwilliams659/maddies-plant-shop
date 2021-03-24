@@ -52,3 +52,16 @@ CREATE TABLE basket_table(id varchar(25), plant_name varchar(25), cart_id varcha
 
 
 UPDATE basket_table set quantity = 2 where cart_id ='cartid' and plant_name = 'cactus';
+
+
+
+
+INSERT INTO plants_data (plant_name, plant_type, quantity, price) VALUES ("Aloe Vera", "Indoor", 500, 10);
+INSERT INTO plants_data (plant_name, plant_type, quantity, price) VALUES ("Monstera Deliciosa", "Indoor", 500, 15);
+INSERT INTO plants_data (plant_name, plant_type, quantity, price) VALUES ("Cactus", "Indoor", 500, 8);
+INSERT INTO plants_data (plant_name, plant_type, quantity, price) VALUES ("Spider Plant", "Indoor", 500, 8);
+INSERT INTO plants_data (plant_name, plant_type, quantity, price) VALUES ("Snake Plant", "Indoor", 500, 20);
+INSERT INTO plants_data (plant_name, plant_type, quantity, price) VALUES ("Devils Ivy", "Indoor", 500, 15);
+INSERT INTO plants_data (plant_name, plant_type, quantity, price) VALUES ("Olive Tree", "Outdoor", 500, 50);
+INSERT INTO plants_data (plant_name, plant_type, quantity, price) VALUES ("Lemon Tree", "Outdoor", 500, 60);
+INSERT INTO plants_data (plant_name, plant_type, quantity, price) VALUES ("Palm Tree", "Outdoor", 500, 65);
