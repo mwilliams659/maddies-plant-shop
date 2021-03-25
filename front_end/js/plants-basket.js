@@ -86,6 +86,7 @@ function displayBasket() {
     
     
     
+        subTotal = Number(subTotal);
         subTotal = subTotal + plantPrice * plantQuantity;
       
     
@@ -96,10 +97,12 @@ function displayBasket() {
       document.getElementById("total1").innerHTML = "Total:";
       document.getElementById("subtotal2").innerHTML = "£" + subTotal.toFixed(2);
       document.getElementById("delivery2").innerHTML = "United Kingdom";
-      document.getElementById("payment2").innerHTML = "£3.99";
-      document.getElementById("total2").innerHTML = "£" + (subTotal + 3.99);
+      document.getElementById("payment2").innerHTML = "£4.00";
+      totalWithDelivery = parseFloat(subTotal + 4);
+      document.getElementById("total2").innerHTML = "£" + totalWithDelivery.toFixed(2);
   } else {
-    document.getElementById("emptyBasket").innerHTML = "Your basket is currently empty.";
+    document.getElementById("emptyBasket").innerHTML = "There are currenty no items in your basket.";
+    document.getElementById("summary").style.display = "none";
   }
 
 

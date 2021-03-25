@@ -180,7 +180,7 @@ button:hover {
 p {
     color: #ffffff; 
     text-align: center;
-    font-size: 20px;
+    font-size: 24px;
     margin: 10px;
     font-family: sans-serif;
 }
@@ -198,7 +198,7 @@ h2, h3 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 28px;
     position: relative;
-    float: right;
+    /* float: right; */
 }
 
 
@@ -251,7 +251,7 @@ th {
 }
 
 table {
-  font-family:monospace;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size:28px;
   width: 70%;
   border-collapse:collapse;
@@ -310,6 +310,21 @@ ul {
 	text-align: left; 
 	}
 
-#delivery {
+#delivery2 {
   font-style: italic;
 }
+
+#payment2, #total2 {
+  border-bottom: 2px solid #ffffff;
+  border-bottom-style: dashed;
+}
+
+#total1, #total2 {
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+#column2 {
+
+}
+
