@@ -33,20 +33,28 @@
         <p>
             <br>
             <h1>Your basket...</h1>
-            <h2 id="subtotal"></h2>
+            <!-- <h2 id="subtotal"></h2> -->
             <h3 id="emptyBasket"></h3>
         </p>
-        <table id="basket_table" class="my_basket_table" style="display: none;">
-            <caption></caption>
-            <tr class="table_rows">
-                <th>Plant</th>
-                <th>Item Name</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Remove</th>
-            </tr>
-        </table>
+        <div class="row">
+            <div class="column">
+                <table id="basket_table" class="my_basket_table" style="display: none;">
+                    <caption></caption>
+                    <tr class="table_rows">
+                        <th>Plant</th>
+                        <th>Item Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Remove</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="column">
+                <h2 id="subtotal"></h2>
+            </div>
+        </div>
     </body>
+    <br>
     <footer>Created by Madeleine Williams, 2020</footer>
     <script src="../js/plants-basket.js"></script>
     </html>
