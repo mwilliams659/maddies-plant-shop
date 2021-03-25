@@ -100,9 +100,11 @@ function displayBasket() {
       document.getElementById("payment2").innerHTML = "£4.00";
       totalWithDelivery = parseFloat(subTotal + 4);
       document.getElementById("total2").innerHTML = "£" + totalWithDelivery.toFixed(2);
+      document.getElementById("checkout").innerHTML = "CHECKOUT";
   } else {
     document.getElementById("emptyBasket").innerHTML = "There are currenty no items in your basket.";
     document.getElementById("summary").style.display = "none";
+    document.getElementById("checkout").style.display = "none";
   }
 
 
