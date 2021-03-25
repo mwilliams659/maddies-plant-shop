@@ -266,6 +266,8 @@ i {
 }
 
 
+/* Column styling to divide the page */
+
 
 .row1 {
   display: flex;
@@ -284,6 +286,8 @@ i {
 .column2 {
   flex: 50%;
 }
+
+/* List styling */
 
 ul.demo {
   list-style-type: none;
@@ -324,7 +328,5 @@ ul {
   font-size: 20px;
 }
 
-#column2 {
 
-}
 
