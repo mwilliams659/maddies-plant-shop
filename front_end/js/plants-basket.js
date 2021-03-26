@@ -94,7 +94,7 @@ function displayBasket() {
       document.getElementById("subtotal1").innerHTML = "Subtotal (excluding delivery):";
       document.getElementById("delivery1").innerHTML = "Delivering to:";
       document.getElementById("payment1").innerHTML = "UK Standard delivery:";
-      document.getElementById("total1").innerHTML = "Total:";
+      document.getElementById("total1").innerHTML = "Total (including delivery):";
       document.getElementById("subtotal2").innerHTML = "£" + subTotal.toFixed(2);
       document.getElementById("delivery2").innerHTML = "United Kingdom";
       document.getElementById("payment2").innerHTML = "£4.00";
