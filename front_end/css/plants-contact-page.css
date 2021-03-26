@@ -1,0 +1,272 @@
+/* Style inputs with type="text", select elements and textareas */
+input[type=text], select, textarea {
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */ 
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+  }
+  
+  /* Style the submit button with a specific background color etc */
+  input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* When moving the mouse over the submit button, add a darker green color */
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  
+  /* Add a background color and some padding around the form */
+  .container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+
+/* Page Animations */
+.animate-in {
+    -webkit-animation: fadeIn .5s ease-in;
+    animation: fadeIn .5s ease-in;
+}
+
+.animate-out {
+    -webkit-transition: opacity .5s;
+    transition: opacity .5s;
+    opacity: 0;
+}
+
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.stock-name {
+    transition: background-position 275ms ease;
+}
+
+.stock-name:hover {
+    background-position: 0 100%;
+  }
+
+.grow {
+    transition: all .2s ease-in-out;
+}
+
+.grow:hover {
+    transform: scale(1.1);
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: #4e7c4a;
+    overflow: hidden;
+    /* border-bottom:2px solid rgb(0,0,0);padding-bottom:10px */
+    /* position: fixed; */
+    top: 0;
+  }
+  
+
+
+  /* Style the links inside the navigation bar */
+  .header {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 22px;
+    font-family: 'Zilla Slab', serif;
+    font-style: italic;
+    border-radius: 1px;
+    height: 30px;
+  }
+  
+  /* Style the icons on the navigation bar */
+  .topnav i, .topnav div {
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      cursor: pointer;
+      height: 30px; 
+      width: auto; 
+      float: right;
+  }
+
+.topnav div {
+    font-size: 22px;
+    font-family: 'Zilla Slab', serif;
+    padding-top: 20px;
+}
+
+  /* Change the colour of links on hover */
+  .header:hover {
+    background-color: #f2f2f2;
+    color: #000000;
+  }
+  
+  /* Add an active class to highlight the current page */
+  .topnav a.active {
+    background-color: #4CAF50;
+    color: #f2f2f2;
+  }
+
+  /* Change the colour of the icons on hover */
+  
+  .head:hover {
+    background-color: #f2f2f2;
+    color: #000000;
+  }
+
+  .head {
+      border-radius: 2px;
+  }
+
+
+  /* Cart/basket icon and item count */
+
+  .badge {
+    padding-left: 16px;
+    padding-right: 16px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+  }
+  
+  
+#lblCartCount {
+    font-family: sans-serif;
+    font-size: 14px;
+    /* font-weight: bold; */
+    background: #4CAF50;
+    color: #000000;
+    padding: 0 7px;
+    vertical-align: top;
+    margin-left: -10px; 
+}  
+
+  /*  */
+
+.flex-container-parent {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+}
+
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    flex-direction: column;
+    padding: 50px 50px 50px;
+
+}
+
+
+
+body {
+    background-color: #4e7c4a;
+}
+
+
+button {
+    background-color: #4CAF50;
+    border: black;
+    border-radius: 3px;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    font-size: 16px;
+    margin: 10px;   
+    user-select: none;
+    font-family: 'Zilla Slab', serif;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #2d572f;
+}
+
+p {
+    color: #ffffff; 
+    text-align: center;
+    font-size: 24px;
+    margin: 10px;
+    font-family: sans-serif;
+}
+
+h1 {
+    color: #f2f2f2;
+    font-family: 'Cardo', serif;
+    border-bottom: 2px solid #2d572f;
+    border-bottom-style: solid;
+    padding-bottom:10px;
+}
+
+h2, h3 {
+    color: #f2f2f2;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 28px;
+    position: relative;
+    /* float: right; */
+}
+
+form, textarea, div {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+
+#stock-name {
+    font-family: 'Zilla Slab', serif;
+    color: #f2f2f2;
+    font-size: 26px;
+    text-align: center;
+}
+
+footer {
+    color: #f2f2f2;
+    text-align: center;
+    font-family: monospace;
+}
+
+/* /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
+@media screen and (max-width: 600px) {
+  .topnav a, .topnav input[type=text] {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;
+  }
+}
+
+.row {
+    display: flex;
+  }
+  
+  .column {
+    flex: 50%;
+  }
