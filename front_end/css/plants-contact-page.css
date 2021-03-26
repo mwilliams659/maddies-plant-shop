@@ -28,7 +28,7 @@ input[type=text], select, textarea {
   /* Add a background color and some padding around the form */
   .container {
     border-radius: 5px;
-    background-color: #f2f2f2;
+    /* background-color: #f2f2f2; */
     padding: 20px;
   }
 
@@ -269,4 +269,21 @@ footer {
   
   .column {
     flex: 50%;
+  }
+
+img {
+      width: 70%;
+      height: 70%;
+      padding-top: 0;
+      border: 5px solid #000000;
+      border-radius: 1px;
+}
+
+.zoom {
+    transition: transform .2s; /* Animation */
+    margin: 0 auto;
+  }
+  
+  .zoom:hover {
+    transform: scale(1.10); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
   }
