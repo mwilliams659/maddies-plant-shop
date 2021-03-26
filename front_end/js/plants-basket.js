@@ -101,6 +101,8 @@ function displayBasket() {
       totalWithDelivery = parseFloat(subTotal + 4);
       document.getElementById("total2").innerHTML = "£" + totalWithDelivery.toFixed(2);
       document.getElementById("checkout").innerHTML = "CHECKOUT";
+      document.getElementById("iconContainer").style.display = "block";
+
   } else {
     document.getElementById("emptyBasket").innerHTML = "There are currenty no items in your basket.";
     document.getElementById("summary").style.display = "none";
