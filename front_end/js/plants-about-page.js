@@ -3,47 +3,50 @@ window.addEventListener("beforeunload", function () {
     document.body.classList.add("animate-out");
   });
   
-  function responsiveNavbar() {
+// Navigation bar
+function responsiveNavbar() {
     var x = document.getElementById("myTopnav");
     if (x.className === "topnav") {
       x.className += " responsive";
     } else {
       x.className = "topnav";
     }
-  }
+}
 
-  function httpGet(theUrl) {
+// Http Get request
+function httpGet(theUrl) {
     let xmlHttpReq = new XMLHttpRequest();
     xmlHttpReq.open("GET", theUrl, false);
     xmlHttpReq.setRequestHeader('Content-type', 'application/json') 
     xmlHttpReq.send(null);
     return xmlHttpReq.responseText;
-  }
+}
 
-  // displays basket quantities in basket icon
+// displays basket quantities in basket icon
 function displayBasketQuantity() {
     basketQuantity = httpGet(`http://127.0.0.1:5000/basket_table_data/all_items_quantity`)
     document.getElementById('lblCartCount').innerHTML = basketQuantity;
-  }
+}
   
-  displayBasketQuantity();
+displayBasketQuantity();
   
-// SLIDESHOW
 
-  var slideIndex = 1;
-  showSlides(slideIndex);
+// Slideshow
+
+var slideIndex = 1;
+showSlides(slideIndex);
   
-  // Next/previous controls
-  function plusSlides(n) {
+// Next/previous controls
+function plusSlides(n) {
     showSlides(slideIndex += n);
-  }
+}
   
-  // Thumbnail image controls
-  function currentSlide(n) {
+// Thumbnail image controls
+function currentSlide(n) {
     showSlides(slideIndex = n);
-  }
-  
-  function showSlides(n) {
+}
+
+function showSlides(n) {
     var i;
     var slides = document.getElementsByClassName("mySlides");
     var dots = document.getElementsByClassName("demo");
@@ -51,14 +54,14 @@ function displayBasketQuantity() {
     if (n > slides.length) {slideIndex = 1}
     if (n < 1) {slideIndex = slides.length}
     for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
+        slides[i].style.display = "none";
     }
     for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
+        dots[i].className = dots[i].className.replace(" active", "");
     }
     slides[slideIndex-1].style.display = "block";
     dots[slideIndex-1].className += " active";
     captionText.innerHTML = dots[slideIndex-1].alt;
-  }
+}
 
 

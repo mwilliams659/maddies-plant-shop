@@ -135,7 +135,6 @@ input[type=submit]:hover {
 #lblCartCount {
   font-family: sans-serif;
   font-size: 14px;
-  /* font-weight: bold; */
   background: #4CAF50;
   color: #000000;
   padding: 0 7px;
@@ -243,10 +242,10 @@ img {
 }
 
 .zoom {
-    transition: transform .2s; /* Animation */
-    margin: 0 auto;
-  }
+  transition: transform .2s; /* Animation */
+  margin: 0 auto;
+}
   
 .zoom:hover {
-    transform: scale(1.10); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  transform: scale(1.10); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }

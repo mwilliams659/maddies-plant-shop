@@ -3,6 +3,7 @@ window.addEventListener("beforeunload", function () {
   document.body.classList.add("animate-out");
 });
 
+
 function responsiveNavbar() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -40,12 +41,6 @@ function displayStock() {
 
 displayStock();
 
-
-// Buy button - when clicked it will reduce the chosen stock quantity by 1
-// function buyStockButton(plantName) {
-//   httpGet(`http://127.0.0.1:5000/plants_data/${plantName}/purchase`);
-//   location.reload();
-// }
 
 // function that triggers api add to basket function given parameters
 function addToBasket(plantName) {
