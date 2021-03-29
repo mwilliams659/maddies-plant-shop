@@ -1,0 +1,314 @@
+/* Page Animations */
+.animate-in {
+    -webkit-animation: fadeIn .5s ease-in;
+    animation: fadeIn .5s ease-in;
+}
+
+.animate-out {
+    -webkit-transition: opacity .5s;
+    transition: opacity .5s;
+    opacity: 0;
+}
+
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+
+
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: #4e7c4a;
+    overflow: hidden;
+    /* border-bottom:2px solid rgb(0,0,0);padding-bottom:10px */
+    /* position: fixed; */
+    top: 0;
+  }
+  
+
+
+  /* Style the links inside the navigation bar */
+.header {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 22px;
+    font-family: 'Zilla Slab', serif;
+    font-style: italic;
+    border-radius: 1px;
+    height: 30px;
+}
+  
+  /* Style the icons on the navigation bar */
+.topnav i, .topnav div {
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    cursor: pointer;
+    height: 30px; 
+    width: auto; 
+    float: right;
+}
+
+.topnav div {
+    font-size: 22px;
+    font-family: 'Zilla Slab', serif;
+    padding-top: 20px;
+}
+
+  /* Change the colour of links on hover */
+.header:hover {
+    background-color: #f2f2f2;
+    color: #000000;
+}
+  
+  /* Add an active class to highlight the current page */
+.topnav a.active {
+    background-color: #4CAF50;
+    color: #f2f2f2;
+}
+
+  /* Change the colour of the icons on hover */
+  
+.head:hover {
+    background-color: #f2f2f2;
+    color: #000000;
+}
+
+.head {
+    border-radius: 2px;
+}
+
+
+  /* Cart/basket icon and item count */
+
+.badge {
+    padding-left: 16px;
+    padding-right: 16px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+}
+  
+  
+#lblCartCount {
+    font-family: sans-serif;
+    font-size: 14px;
+    background: #4CAF50;
+    color: #000000;
+    padding: 0 7px;
+    vertical-align: top;
+    margin-left: -10px; 
+}  
+
+
+
+body {
+    background-color: #4e7c4a;
+}
+
+
+button {
+    background-color: #4CAF50;
+    border: black;
+    border-radius: 3px;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    font-size: 16px;
+    margin: 10px;   
+    user-select: none;
+    font-family: 'Zilla Slab', serif;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #2d572f;
+}
+
+p {
+    color: #ffffff; 
+    text-align: center;
+    font-size: 24px;
+    margin: 10px;
+    font-family: sans-serif;
+}
+
+h1 {
+    color: #f2f2f2;
+    font-family: 'Cardo', serif;
+    border-bottom: 2px solid #2d572f;
+    border-bottom-style: solid;
+    padding-bottom:10px;
+}
+
+h2, h3 {
+    color: #f2f2f2;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 28px;
+    position: relative;
+}
+
+form, textarea, div {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+div {
+    color: #ffffff;
+}
+
+#stock-name {
+    font-family: 'Zilla Slab', serif;
+    color: #f2f2f2;
+    font-size: 26px;
+    text-align: center;
+}
+
+.imgMain {
+    width: 800px;
+    height: 500px;
+}
+
+footer {
+    color: #f2f2f2;
+    text-align: center;
+    font-family: monospace;
+}
+
+/* /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
+@media screen and (max-width: 600px) {
+  .topnav a, .topnav input[type=text] {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;
+  }
+}
+
+.row {
+    display: flex;
+  }
+  
+.column {
+    flex: 50%;
+}
+
+
+
+.zoom {
+    transition: transform .2s; /* Animation */
+    margin: 0 auto;
+}
+  
+.zoom:hover {
+    transform: scale(1.10); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+
+/* Slideshow */
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+    position: relative;
+    justify-self: center;
+    max-width: 100%;
+  }
+  
+/* Hide the images by default */
+.mySlides {
+    display : none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+    cursor: pointer;    
+}
+
+/* Next & previous buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+    text-align: center;
+    background-color: #222;
+    padding: 2px 16px;
+    color: white;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Six columns side by side */
+.column {
+    float: left;
+    width: 16.66%;
+    height: 100%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+    opacity: 0.6;       
+}
+
+.active, .demo:hover {
+    opacity: 1;
+}
+
+.aboutInfo {
+    /* border: #000000 solid 2px; */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: lighter;
+    font-size: 19px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
