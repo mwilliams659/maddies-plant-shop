@@ -187,7 +187,7 @@ p {
 
 h1 {
     color: #f2f2f2;
-    font-family: 'Cardo', serif;
+    font-family: 'Shippori Mincho', serif;    
     border-bottom: 2px solid #2d572f;
     border-bottom-style: solid;
     padding-bottom:10px;
@@ -196,7 +196,8 @@ h1 {
 h2, h3 {
     color: #f2f2f2;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 28px;
+    font-size: 18px;
+    font-weight: lighter;
     position: relative;
     /* float: right; */
 }
@@ -204,7 +205,7 @@ h2, h3 {
 
 
 #stock-name {
-    font-family: 'Zilla Slab', serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: #f2f2f2;
     font-size: 26px;
     text-align: center;
