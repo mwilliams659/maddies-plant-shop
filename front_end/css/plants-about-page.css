@@ -181,7 +181,7 @@ div {
 
 /* Slideshow image size */
 .imgMain {
-    width: 800px;
+    width: 700px;
     height: 500px;
 }
 
@@ -222,6 +222,7 @@ footer {
     justify-self: center;
     max-width: 100%;
     left: 1%;
+    
   }
   
 /* Hide the images by default */
