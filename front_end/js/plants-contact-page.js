@@ -3,15 +3,6 @@ window.addEventListener("beforeunload", function () {
     document.body.classList.add("animate-out");
   });
 
-// Navigation bar 
-function responsiveNavbar() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
 
 // HTTP Get request
 function httpGet(theUrl) {
@@ -31,7 +22,7 @@ function displayBasketQuantity() {
 displayBasketQuantity();
 
 
-// particles
+// particles background
 particlesJS("particles-js", {
   particles: {
     number: { value: 4, density: { enable: true, value_area: 800 } },
@@ -89,11 +80,6 @@ particlesJS("particles-js", {
 });
 
 update = function () {
-  // stats.begin();
-  // stats.end();
-  if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
-    count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
-  }
   requestAnimationFrame(update);
 };
 requestAnimationFrame(update);
