@@ -54,9 +54,7 @@ particlesJS("particles-js", {
   },
   retina_detect: true
 });
-
 update = function () {
-
   requestAnimationFrame(update);
 };
 requestAnimationFrame(update);
