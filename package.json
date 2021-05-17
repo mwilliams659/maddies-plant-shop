@@ -1,0 +1,22 @@
+{
+  "name": "maddies-plant-shop",
+  "version": "1.0.0",
+  "description": "A web page that displays the plant stock from a plant shop from the database via a Python REST API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mwilliams659/maddies-plant-shop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mwilliams659/maddies-plant-shop/issues"
+  },
+  "homepage": "https://github.com/mwilliams659/maddies-plant-shop#readme",
+  "dependencies": {
+    "jest": "^26.6.3"
+  }
+}
