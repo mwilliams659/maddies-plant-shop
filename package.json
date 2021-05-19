@@ -4,7 +4,8 @@
   "description": "A web page that displays the plant stock from a plant shop from the database via a Python REST API.",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "testwatch": "jest --watchAll"
   },
   "repository": {
     "type": "git",
