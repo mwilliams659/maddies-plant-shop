@@ -24,13 +24,14 @@ for(i = 0; i < (plantsList).length; i++  ){
 }
 
 // Displays all available stock
-function displayStock() {
+function displayStock(plantsList, plantsQuantities) {
   for(i = 0; i < (plantsList).length; i++ ) {
+    console.log(plantsList[i])
     document.getElementById(`${plantsList[i]}-stock`).innerHTML = plantsQuantities[i] + " available";
   }
 }
 
-displayStock();
+// displayStock(plantsList, plantsQuantities);
 
 
 // function that triggers api add to basket function given parameters
@@ -45,65 +46,77 @@ function displayBasketQuantity() {
   document.getElementById('lblCartCount').innerHTML = basketQuantity;
 }
 
-displayBasketQuantity();
+// displayBasketQuantity();
+
 
 // particles background
-particlesJS("particles-js", {
-  particles: {
-    number: { value: 4, density: { enable: true, value_area: 800 } },
-    color: { value: "#4caf50" },
-    shape: {
-      type: "polygon",
-      stroke: { width: 0, color: "#000" },
-      polygon: { nb_sides: 6 },
-      image: { src: "img/github.svg", width: 100, height: 100 }
+function startParticles() {
+  particlesJS("particles-js", {
+    particles: {
+      number: { value: 4, density: { enable: true, value_area: 800 } },
+      color: { value: "#4caf50" },
+      shape: {
+        type: "polygon",
+        stroke: { width: 0, color: "#000" },
+        polygon: { nb_sides: 6 },
+        image: { src: "img/github.svg", width: 100, height: 100 }
+      },
+      opacity: {
+        value: 0.3,
+        random: true,
+        anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false }
+      },
+      size: {
+        value: 91.9080919080919,
+        random: false,
+        anim: { enable: true, speed: 10, size_min: 40, sync: false }
+      },
+      line_linked: {
+        enable: false,
+        distance: 200,
+        color: "#ffffff",
+        opacity: 1,
+        width: 2
+      },
+      move: {
+        enable: true,
+        speed: 4.795204795204795,
+        direction: "none",
+        random: false,
+        straight: false,
+        out_mode: "out",
+        bounce: false,
+        attract: { enable: false, rotateX: 600, rotateY: 1200 }
+      }
     },
-    opacity: {
-      value: 0.3,
-      random: true,
-      anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false }
+    interactivity: {
+      detect_on: "canvas",
+      events: {
+        onhover: { enable: false, mode: "grab" },
+        onclick: { enable: false, mode: "push" },
+        resize: true
+      },
+      modes: {
+        grab: { distance: 400, line_linked: { opacity: 1 } },
+        bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 },
+        repulse: { distance: 200, duration: 0.4 },
+        push: { particles_nb: 4 },
+        remove: { particles_nb: 2 }
+      }
     },
-    size: {
-      value: 91.9080919080919,
-      random: false,
-      anim: { enable: true, speed: 10, size_min: 40, sync: false }
-    },
-    line_linked: {
-      enable: false,
-      distance: 200,
-      color: "#ffffff",
-      opacity: 1,
-      width: 2
-    },
-    move: {
-      enable: true,
-      speed: 4.795204795204795,
-      direction: "none",
-      random: false,
-      straight: false,
-      out_mode: "out",
-      bounce: false,
-      attract: { enable: false, rotateX: 600, rotateY: 1200 }
-    }
-  },
-  interactivity: {
-    detect_on: "canvas",
-    events: {
-      onhover: { enable: false, mode: "grab" },
-      onclick: { enable: false, mode: "push" },
-      resize: true
-    },
-    modes: {
-      grab: { distance: 400, line_linked: { opacity: 1 } },
-      bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 },
-      repulse: { distance: 200, duration: 0.4 },
-      push: { particles_nb: 4 },
-      remove: { particles_nb: 2 }
-    }
-  },
-  retina_detect: true
-});
-update = function () {
+    retina_detect: true
+  });
+  update = function () {
+    requestAnimationFrame(update);
+  };
   requestAnimationFrame(update);
-};
-requestAnimationFrame(update);
+}
+
+
+window.onload =
+  displayStock(plantsList, plantsQuantities);
+  displayBasketQuantity();
+  startParticles();
+
+
+module.exports = { displayStock, displayBasketQuantity };
